@@ -31,15 +31,19 @@ import "package:js/js.dart";
 abstract class KeycloakConfig {
   /// URL to the Keycloak server, for example: http://keycloak-server/auth
   external String get url;
+
   external set url(String v);
 
   /// Name of the realm, for example: 'myrealm'
   external String get realm;
+
   external set realm(String v);
 
   /// Client identifier, example: 'myapp'
   external String get clientId;
+
   external set clientId(String v);
+
   external factory KeycloakConfig({String url, String realm, String clientId});
 }
 
@@ -50,6 +54,7 @@ abstract class KeycloakInitOptions {
   /// to verify that the authentication response matches the request.
   /// @default true
   external bool get useNonce;
+
   external set useNonce(bool v);
 
   /// Allows to use different adapter:
@@ -57,39 +62,47 @@ abstract class KeycloakInitOptions {
   /// - {string} cordova - using cordova plugins
   /// - {function} - allows to provide custom function as adapter.
   external dynamic /*'cordova'|'cordova-native'|'default'|dynamic*/ get adapter;
+
   external set adapter(
       dynamic /*'cordova'|'cordova-native'|'default'|dynamic*/ v);
 
   /// Specifies an action to do on load.
   external String /*'login-required'|'check-sso'*/ get onLoad;
+
   external set onLoad(String /*'login-required'|'check-sso'*/ v);
 
   /// Set an initial value for the token.
   external String get token;
+
   external set token(String v);
 
   /// Set an initial value for the refresh token.
   external String get refreshToken;
+
   external set refreshToken(String v);
 
   /// Set an initial value for the id token (only together with `token` or
   /// `refreshToken`).
   external String get idToken;
+
   external set idToken(String v);
 
   /// Set an initial value for skew between local time and Keycloak server in
   /// seconds (only together with `token` or `refreshToken`).
   external num get timeSkew;
+
   external set timeSkew(num v);
 
   /// Set to enable/disable monitoring login state.
   /// @default true
   external bool get checkLoginIframe;
+
   external set checkLoginIframe(bool v);
 
   /// Set the interval to check login state (in seconds).
   /// @default 5
   external num get checkLoginIframeInterval;
+
   external set checkLoginIframeInterval(num v);
 
   /// Set the OpenID Connect response mode to send to Keycloak upon login.
@@ -98,50 +111,56 @@ abstract class KeycloakInitOptions {
   /// added in URL fragment. This is generally safer and
   /// recommended over query.
   external String /*'query'|'fragment'*/ get responseMode;
+
   external set responseMode(String /*'query'|'fragment'*/ v);
 
   /// Specifies a default uri to redirect to after login or logout.
   /// This is currently supported for adapter 'cordova-native' and 'default'
   external String get redirectUri;
+
   external set redirectUri(String v);
 
   /// Specifies an uri to redirect to after silent check-sso.
   /// Silent check-sso will only happen, when this redirect uri is given and
   /// the specified uri is available whithin the application.
   external String get silentCheckSsoRedirectUri;
+
   external set silentCheckSsoRedirectUri(String v);
 
   /// Set the OpenID Connect flow.
   /// @default standard
   external String /*'standard'|'implicit'|'hybrid'*/ get flow;
+
   external set flow(String /*'standard'|'implicit'|'hybrid'*/ v);
 
   /// Configures the Proof Key for Code Exchange (PKCE) method to use.
   /// The currently allowed method is 'S256'.
   /// If not configured, PKCE will not be used.
   external String /*'S256'*/ get pkceMethod;
+
   external set pkceMethod(String /*'S256'*/ v);
 
   /// Enables logging messages from Keycloak to the console.
   /// @default false
   external bool get enableLogging;
+
   external set enableLogging(bool v);
-  external factory KeycloakInitOptions(
-      {bool useNonce,
-      dynamic /*'cordova'|'cordova-native'|'default'|dynamic*/ adapter,
-      String /*'login-required'|'check-sso'*/ onLoad,
-      String token,
-      String refreshToken,
-      String idToken,
-      num timeSkew,
-      bool checkLoginIframe,
-      num checkLoginIframeInterval,
-      String /*'query'|'fragment'*/ responseMode,
-      String redirectUri,
-      String silentCheckSsoRedirectUri,
-      String /*'standard'|'implicit'|'hybrid'*/ flow,
-      String /*'S256'*/ pkceMethod,
-      bool enableLogging});
+
+  external factory KeycloakInitOptions({bool useNonce,
+    dynamic /*'cordova'|'cordova-native'|'default'|dynamic*/ adapter,
+    String /*'login-required'|'check-sso'*/ onLoad,
+    String token,
+    String refreshToken,
+    String idToken,
+    num timeSkew,
+    bool checkLoginIframe,
+    num checkLoginIframeInterval,
+    String /*'query'|'fragment'*/ responseMode,
+    String redirectUri,
+    String silentCheckSsoRedirectUri,
+    String /*'standard'|'implicit'|'hybrid'*/ flow,
+    String /*'S256'*/ pkceMethod,
+    bool enableLogging});
 }
 
 @anonymous
@@ -149,10 +168,12 @@ abstract class KeycloakInitOptions {
 abstract class KeycloakLoginOptions {
   /// @private Undocumented.
   external String get scope;
+
   external set scope(String v);
 
   /// Specifies the uri to redirect to after login.
   external String get redirectUri;
+
   external set redirectUri(String v);
 
   /// By default the login screen is displayed if the user is not logged into
@@ -161,11 +182,13 @@ abstract class KeycloakLoginOptions {
   /// this option to `'none'`. To always require re-authentication and ignore
   /// SSO, set this option to `'login'`.
   external String /*'none'|'login'*/ get prompt;
+
   external set prompt(String /*'none'|'login'*/ v);
 
   /// If value is `'register'` then user is redirected to registration page,
   /// otherwise to login page.
   external String get action;
+
   external set action(String v);
 
   /// Used just if user is already authenticated. Specifies maximum time since
@@ -173,19 +196,23 @@ abstract class KeycloakLoginOptions {
   /// longer time than `'maxAge'`, the SSO is ignored and he will need to
   /// authenticate again.
   external num get maxAge;
+
   external set maxAge(num v);
 
   /// Used to pre-fill the username/email field on the login form.
   external String get loginHint;
+
   external set loginHint(String v);
 
   /// Used to tell Keycloak which IDP the user wants to authenticate with.
   external String get idpHint;
+
   external set idpHint(String v);
 
   /// Sets the 'ui_locales' query param in compliance with section 3.1.2.1
   /// of the OIDC 1.0 specification.
   external String get locale;
+
   external set locale(String v);
 
   /// Specifies arguments that are passed to the Cordova in-app-browser (if applicable).
@@ -193,17 +220,18 @@ abstract class KeycloakLoginOptions {
   /// All available options are defined at https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-inappbrowser/.
   /// Example of use: { zoom: "no", hardwareback: "yes" }
   external dynamic /*JSMap of <String,String>*/ get cordovaOptions;
+
   external set cordovaOptions(dynamic /*JSMap of <String,String>*/ v);
-  external factory KeycloakLoginOptions(
-      {String scope,
-      String redirectUri,
-      String /*'none'|'login'*/ prompt,
-      String action,
-      num maxAge,
-      String loginHint,
-      String idpHint,
-      String locale,
-      dynamic /*JSMap of <String,String>*/ cordovaOptions});
+
+  external factory KeycloakLoginOptions({String scope,
+    String redirectUri,
+    String /*'none'|'login'*/ prompt,
+    String action,
+    num maxAge,
+    String loginHint,
+    String idpHint,
+    String locale,
+    dynamic /*JSMap of <String,String>*/ cordovaOptions});
 }
 
 @anonymous
@@ -211,7 +239,9 @@ abstract class KeycloakLoginOptions {
 abstract class KeycloakLogoutOptions {
   /// Specifies the uri to redirect to after logout.
   external String get redirectUri;
+
   external set redirectUri(String v);
+
   external factory KeycloakLogoutOptions({String redirectUri});
 }
 
@@ -237,9 +267,13 @@ typedef void KeycloakPromiseCallback<T>(T result);
 @JS()
 abstract class KeycloakError {
   external String get error;
+
   external set error(String v);
+
   external String get error_description;
+
   external set error_description(String v);
+
   external factory KeycloakError({String error, String error_description});
 }
 
@@ -247,71 +281,109 @@ abstract class KeycloakError {
 @JS()
 abstract class KeycloakAdapter {
   external Future login([KeycloakLoginOptions options]);
+
   external Future logout([KeycloakLogoutOptions options]);
+
   external Future register([KeycloakLoginOptions options]);
+
   external Future accountManagement();
-  external String redirectUri(
-      dynamic /*{ redirectUri: string; }*/ options, bool encodeHash);
+
+  external String redirectUri(dynamic /*{ redirectUri: string; }*/ options,
+      bool encodeHash);
 }
 
 @anonymous
 @JS()
 abstract class KeycloakProfile {
   external String get id;
+
   external set id(String v);
+
   external String get username;
+
   external set username(String v);
+
   external String get email;
+
   external set email(String v);
+
   external String get firstName;
+
   external set firstName(String v);
+
   external String get lastName;
+
   external set lastName(String v);
+
   external bool get enabled;
+
   external set enabled(bool v);
+
   external bool get emailVerified;
+
   external set emailVerified(bool v);
+
   external bool get totp;
+
   external set totp(bool v);
+
   external num get createdTimestamp;
+
   external set createdTimestamp(num v);
-  external factory KeycloakProfile(
-      {String id,
-      String username,
-      String email,
-      String firstName,
-      String lastName,
-      bool enabled,
-      bool emailVerified,
-      bool totp,
-      num createdTimestamp});
+
+  external factory KeycloakProfile({String id,
+    String username,
+    String email,
+    String firstName,
+    String lastName,
+    bool enabled,
+    bool emailVerified,
+    bool totp,
+    num createdTimestamp});
 }
 
 @anonymous
 @JS()
 abstract class KeycloakTokenParsed {
   external num get exp;
+
   external set exp(num v);
+
   external num get iat;
+
   external set iat(num v);
+
   external String get nonce;
+
   external set nonce(String v);
+
   external String get sub;
+
   external set sub(String v);
+
   external String get session_state;
+
   external set session_state(String v);
+
   external KeycloakRoles get realm_access;
+
   external set realm_access(KeycloakRoles v);
+
   external KeycloakResourceAccess get resource_access;
+
   external set resource_access(KeycloakResourceAccess v);
-  external factory KeycloakTokenParsed(
-      {num exp,
-      num iat,
-      String nonce,
-      String sub,
-      String session_state,
-      KeycloakRoles realm_access,
-      KeycloakResourceAccess resource_access});
+
+  external KeycloakAuthorization get authorization;
+
+  external set authorization(KeycloakAuthorization v);
+
+  external factory KeycloakTokenParsed({num exp,
+    num iat,
+    String nonce,
+    String sub,
+    String session_state,
+    KeycloakRoles realm_access,
+    KeycloakResourceAccess resource_access, KeycloakAuthorization authorization});
 }
 
 @anonymous
@@ -322,9 +394,41 @@ abstract class KeycloakResourceAccess {
 
 @anonymous
 @JS()
+abstract class KeycloakAuthorization {
+  external List<KeycloakPermission> get permissions;
+
+  external set permissions(List<KeycloakPermission> v);
+
+  external factory KeycloakAuthorization(
+      {List<KeycloakPermission> permissions});
+}
+
+@anonymous
+@JS()
+abstract class KeycloakPermission {
+  external List<String> get scopes;
+
+  external set scopes(List<String> v);
+
+  external String get rsid;
+
+  external set rsid(String v);
+
+  external String get rsname;
+
+  external set rsname(String v);
+
+  external factory KeycloakPermission(
+      {List<String> scopes, String rsid, String rsname});
+}
+
+@anonymous
+@JS()
 abstract class KeycloakRoles {
   external List<String> get roles;
+
   external set roles(List<String> v);
+
   external factory KeycloakRoles({List<String> roles});
 }
 
@@ -337,100 +441,123 @@ abstract class Keycloak {
 
   /// Is true if the user is authenticated, false otherwise.
   external bool get authenticated;
+
   external set authenticated(bool v);
 
   /// The user id.
   external String get subject;
+
   external set subject(String v);
 
   /// Response mode passed in init (default value is `'fragment'`).
   external String /*'query'|'fragment'*/ get responseMode;
+
   external set responseMode(String /*'query'|'fragment'*/ v);
 
   /// Response type sent to Keycloak with login requests. This is determined
   /// based on the flow value used during initialization, but can be overridden
   /// by setting this value.
   external String /*'code'|'id_token token'|'code id_token token'*/ get responseType;
+
   external set responseType(
       String /*'code'|'id_token token'|'code id_token token'*/ v);
 
   /// Flow passed in init.
   external String /*'standard'|'implicit'|'hybrid'*/ get flow;
+
   external set flow(String /*'standard'|'implicit'|'hybrid'*/ v);
 
   /// The realm roles associated with the token.
   external KeycloakRoles get realmAccess;
+
   external set realmAccess(KeycloakRoles v);
 
   /// The resource roles associated with the token.
   external KeycloakResourceAccess get resourceAccess;
+
   external set resourceAccess(KeycloakResourceAccess v);
 
   /// The base64 encoded token that can be sent in the Authorization header in
   /// requests to services.
   external String get token;
+
   external set token(String v);
 
   /// The parsed token as a JavaScript object.
   external KeycloakTokenParsed get tokenParsed;
+
   external set tokenParsed(KeycloakTokenParsed v);
 
   /// The base64 encoded refresh token that can be used to retrieve a new token.
   external String get refreshToken;
+
   external set refreshToken(String v);
 
   /// The parsed refresh token as a JavaScript object.
   external KeycloakTokenParsed get refreshTokenParsed;
+
   external set refreshTokenParsed(KeycloakTokenParsed v);
 
   /// The base64 encoded ID token.
   external String get idToken;
+
   external set idToken(String v);
 
   /// The parsed id token as a JavaScript object.
   external KeycloakTokenParsed get idTokenParsed;
+
   external set idTokenParsed(KeycloakTokenParsed v);
 
   /// The estimated time difference between the browser time and the Keycloak
   /// server in seconds. This value is just an estimation, but is accurate
   /// enough when determining if a token is expired or not.
   external num get timeSkew;
+
   external set timeSkew(num v);
 
   /// @private Undocumented.
   external bool get loginRequired;
+
   external set loginRequired(bool v);
 
   /// @private Undocumented.
   external String get authServerUrl;
+
   external set authServerUrl(String v);
 
   /// @private Undocumented.
   external String get realm;
+
   external set realm(String v);
 
   /// @private Undocumented.
   external String get clientId;
+
   external set clientId(String v);
 
   /// @private Undocumented.
   external String get clientSecret;
+
   external set clientSecret(String v);
 
   /// @private Undocumented.
   external String get redirectUri;
+
   external set redirectUri(String v);
 
   /// @private Undocumented.
   external String get sessionId;
+
   external set sessionId(String v);
 
   /// @private Undocumented.
   external KeycloakProfile get profile;
+
   external set profile(KeycloakProfile v);
 
   /// @private Undocumented.
   external dynamic /*{}*/ get userInfo;
+
   external set userInfo(dynamic /*{}*/ v);
 
   /// Called when the adapter is initialized.
@@ -527,7 +654,7 @@ abstract class Keycloak {
   external Future<KeycloakProfile> loadUserProfile();
 
   /// @private Undocumented.
-  external Future<dynamic /*{}*/ > loadUserInfo();
+  external Future<dynamic /*{}*/> loadUserInfo();
 }
 
 // End module Keycloak

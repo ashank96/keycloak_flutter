@@ -58,6 +58,8 @@ class KeycloakService {
     });
   }
 
+  Keycloak getKeyCloak() => _keycloak;
+
   Stream<KeycloakEvent> get keycloakEventsStream => _keycloakEvents.stream;
 
   Future<void> login([KeycloakLoginOptions? options]) async {
